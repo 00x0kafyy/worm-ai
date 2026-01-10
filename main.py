@@ -35,6 +35,8 @@ def send_message(client: WormAi, message: str, extra_data: dict | None):
     try:
         res = client.start_convo(actual_message, extra_data=extra_data)
         if isinstance(res, dict):
+            if "error" in res:
+                return f"[Grok Error] {res.get('error', 'Unknown error')}", extra_data
             return res.get("response"), res.get("extra_data")
         return str(res), extra_data
     except Exception as e:

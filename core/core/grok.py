@@ -177,7 +177,12 @@ class Grok:
                 stream_response: list = []
                 
                 for response_dict in convo_request.text.strip().split('\n'):  
-                    data: dict = loads(response_dict)
+                    if not response_dict.strip():
+                        continue
+                    try:
+                        data: dict = loads(response_dict)
+                    except Exception:
+                        continue
 
                     token: str = data.get('result', {}).get('response', {}).get('token')
                     if token:
@@ -265,7 +270,12 @@ class Grok:
                 stream_response: list = []
                 
                 for response_dict in convo_request.text.strip().split('\n'):
-                    data: dict = loads(response_dict)
+                    if not response_dict.strip():
+                        continue
+                    try:
+                        data: dict = loads(response_dict)
+                    except Exception:
+                        continue
 
                     token: str = data.get('result', {}).get('token')
                     if token:
