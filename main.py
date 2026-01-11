@@ -8,15 +8,10 @@ OBF = os.path.join(HERE, "core")
 if os.path.isdir(OBF):
     if OBF not in sys.path:
         sys.path.insert(0, OBF)
-    try:
-        from pytransform import pyarmor_runtime  # type: ignore
-        pyarmor_runtime()
-    except Exception:
-        pass
 
 import json
 import webbrowser
-from core import WormAi, Log
+from core import Grok as WormAi, Log
 
 PROMPT_FILE = "system-prompt.txt"
 proxy = os.getenv("WORM_PROXY") or os.getenv("GROK_PROXY", "")
@@ -31,12 +26,17 @@ def get_system_prompt():
         return ""
 
 def send_message(client: WormAi, message: str, extra_data: dict | None):
+    # Prepend system prompt to the first message if available
+    actual_message = message
     if not extra_data:
         sp = get_system_prompt()
-        extra_data = {"system_prompt": sp} if sp else None
+        if sp:
+            actual_message = f"{sp}\n\nUser: {message}"
     try:
-        res = client.start_convo(message, extra_data=extra_data)
+        res = client.start_convo(actual_message, extra_data=extra_data)
         if isinstance(res, dict):
+            if "error" in res:
+                return f"[Grok Error] {res.get('error', 'Unknown error')}", extra_data
             return res.get("response"), res.get("extra_data")
         return str(res), extra_data
     except Exception as e:
