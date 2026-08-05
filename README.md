@@ -100,3 +100,8 @@ You can change the terminal experience to your style:
 ### 🌐 Project URL
 
 > [https://github.com/kafyasfngl/worm-ai](https://github.com/kafyasfngl/worm-ai)
+
+## Implementation branch
+Branch: implement/overpowered-suggestions — contains scaffolding and stubs for metrics, training, RAG, and CI examples.
+
+See docs/IMPLEMENTATION_PLAN.md and docs/ROADMAP.md for next steps.
