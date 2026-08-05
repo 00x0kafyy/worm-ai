@@ -1,7 +1,9 @@
 from fastapi import FastAPI, Request, HTTPException
-from fastapi.responses import StreamingResponse, JSONResponse
+from fastapi.responses import JSONResponse
 from prometheus_client import Counter, generate_latest, CONTENT_TYPE_LATEST
 import time, json
+from src.api.cache import cache_key_from_payload
+from functools import lru_cache
 
 requests_total = Counter('wormai_requests_total', 'Total requests')
 inference_latency_seconds = Counter('wormai_inference_latency_seconds', 'Total inference latency seconds')
@@ -9,6 +11,12 @@ inference_latency_seconds = Counter('wormai_inference_latency_seconds', 'Total i
 app = FastAPI(title='worm-ai API')
 
 API_KEY = 'REPLACE_WITH_REAL_KEY'
+
+@lru_cache(maxsize=1024)
+def _cached_predict(payload_json: str):
+    # Placeholder model compute - replace with actual inference call
+    # Keep results JSON-serializable
+    return {'result': f'computed for {payload_json[:200]}'}
 
 @app.get('/health')
 def health():
@@ -28,14 +36,12 @@ async def predict(request: Request):
     requests_total.inc()
     start = time.time()
 
-    # Placeholder streaming SSE response
-    async def gen():
-        yield 'data: {"status":"starting"}\n\n'
-        await request.body()
-        time.sleep(0.1)
-        yield 'data: {"partial":"hello"}\n\n'
-        yield 'data: {"result":"final placeholder"}\n\n'
+    payload = await request.json()
+    key = cache_key_from_payload(payload)
+
+    # Use LRU cache for fast repeated queries
+    result = _cached_predict(key)
 
     latency = time.time() - start
     inference_latency_seconds.inc(latency)
-    return StreamingResponse(gen(), media_type='text/event-stream')
+    return JSONResponse(content=result)
