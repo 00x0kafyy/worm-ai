@@ -1,0 +1,81 @@
+client:
+  name: basic
+  file-system: device-agnostic
+tools: {}
+targets:
+  "PackageStructure": ["<PackageStructure>"]
+  "StreamFusion-x86_64-apple-macosx-debug.exe": ["<StreamFusion-x86_64-apple-macosx-debug.exe>"]
+  "StreamFusion-x86_64-apple-macosx-debug.module": ["<StreamFusion-x86_64-apple-macosx-debug.module>"]
+  "main": ["<StreamFusion-x86_64-apple-macosx-debug.exe>","<StreamFusion-x86_64-apple-macosx-debug.module>"]
+  "test": ["<StreamFusion-x86_64-apple-macosx-debug.exe>","<StreamFusion-x86_64-apple-macosx-debug.module>"]
+default: "main"
+nodes:
+  "/Users/thekidd/worm-ai/StreamFusion/Sources/":
+    is-directory-structure: true
+    content-exclusion-patterns: [".git",".build"]
+  "/Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/StreamFusion":
+    is-mutated: true
+commands:
+  "/Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/StreamFusion-entitlement.plist":
+    tool: write-auxiliary-file
+    inputs: ["<entitlement-plist>","<com.apple.security.get-task-allow>"]
+    outputs: ["/Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/StreamFusion-entitlement.plist"]
+    description: "Write auxiliary file /Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/StreamFusion-entitlement.plist"
+
+  "/Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/StreamFusion.build/sources":
+    tool: write-auxiliary-file
+    inputs: ["<sources-file-list>","/Users/thekidd/worm-ai/StreamFusion/Sources/StreamFusion/main.swift"]
+    outputs: ["/Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/StreamFusion.build/sources"]
+    description: "Write auxiliary file /Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/StreamFusion.build/sources"
+
+  "/Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/StreamFusion.product/Objects.LinkFileList":
+    tool: write-auxiliary-file
+    inputs: ["<link-file-list>","/Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/StreamFusion.build/main.swift.o"]
+    outputs: ["/Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/StreamFusion.product/Objects.LinkFileList"]
+    description: "Write auxiliary file /Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/StreamFusion.product/Objects.LinkFileList"
+
+  "/Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt":
+    tool: write-auxiliary-file
+    inputs: ["<swift-get-version>","/Library/Developer/CommandLineTools/usr/bin/swiftc"]
+    outputs: ["/Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt"]
+    always-out-of-date: "true"
+    description: "Write auxiliary file /Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt"
+
+  "<StreamFusion-x86_64-apple-macosx-debug.exe>":
+    tool: phony
+    inputs: ["<StreamFusion-x86_64-apple-macosx-debug.exe-CodeSigning>"]
+    outputs: ["<StreamFusion-x86_64-apple-macosx-debug.exe>"]
+
+  "<StreamFusion-x86_64-apple-macosx-debug.module>":
+    tool: phony
+    inputs: ["/Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/StreamFusion.build/main.swift.o","/Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/Modules/StreamFusion.swiftmodule"]
+    outputs: ["<StreamFusion-x86_64-apple-macosx-debug.module>"]
+
+  "C.StreamFusion-x86_64-apple-macosx-debug.exe":
+    tool: shell
+    inputs: ["/Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/StreamFusion.build/main.swift.o","/Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/StreamFusion.product/Objects.LinkFileList"]
+    outputs: ["/Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/StreamFusion"]
+    description: "Linking ./.build/x86_64-apple-macosx/debug/StreamFusion"
+    args: ["/Library/Developer/CommandLineTools/usr/bin/swiftc","-L","/Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug","-o","/Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/StreamFusion","-module-name","StreamFusion","-Xlinker","-no_warn_duplicate_libraries","-emit-executable","-Xlinker","-alias","-Xlinker","_StreamFusion_main","-Xlinker","_main","-Xlinker","-rpath","-Xlinker","@loader_path","@/Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/StreamFusion.product/Objects.LinkFileList","-Xlinker","-rpath","-Xlinker","/Library/Developer/CommandLineTools/usr/lib/swift-5.5/macosx","-Xlinker","-rpath","-Xlinker","/Library/Developer/CommandLineTools/usr/lib/swift-6.2/macosx","-target","x86_64-apple-macosx11.0","-Xlinker","-add_ast_path","-Xlinker","/Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/Modules/StreamFusion.swiftmodule","-I","/Library/Developer/CommandLineTools/Library/Developer/Frameworks","-L","/Library/Developer/CommandLineTools/Library/Developer/Frameworks","-plugin-path","/Library/Developer/CommandLineTools/usr/lib/swift/host/plugins/testing","-sdk","/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk","-g"]
+
+  "C.StreamFusion-x86_64-apple-macosx-debug.exe-entitlements":
+    tool: shell
+    inputs: ["/Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/StreamFusion","/Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/StreamFusion-entitlement.plist"]
+    outputs: ["<StreamFusion-x86_64-apple-macosx-debug.exe-CodeSigning>"]
+    description: "Applying debug entitlements to ./.build/x86_64-apple-macosx/debug/StreamFusion"
+    args: ["codesign","--force","--sign","-","--entitlements","/Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/StreamFusion-entitlement.plist","/Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/StreamFusion"]
+
+  "C.StreamFusion-x86_64-apple-macosx-debug.module":
+    tool: shell
+    inputs: ["/Users/thekidd/worm-ai/StreamFusion/Sources/StreamFusion/main.swift","/Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt","/Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/StreamFusion.build/sources"]
+    outputs: ["/Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/StreamFusion.build/main.swift.o","/Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/Modules/StreamFusion.swiftmodule"]
+    description: "Compiling Swift Module 'StreamFusion' (1 sources)"
+    args: ["/Library/Developer/CommandLineTools/usr/bin/swiftc","-module-name","StreamFusion","-emit-dependencies","-emit-module","-emit-module-path","/Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/Modules/StreamFusion.swiftmodule","-output-file-map","/Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/StreamFusion.build/output-file-map.json","-incremental","-c","@/Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/StreamFusion.build/sources","-I","/Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/Modules","-target","x86_64-apple-macosx11.0","-incremental","-enable-batch-mode","-serialize-diagnostics","-index-store-path","/Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/index/store","-Onone","-enable-testing","-j16","-DSWIFT_PACKAGE","-DDEBUG","-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE","-module-cache-path","/Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/ModuleCache","-parseable-output","-Xfrontend","-entry-point-function-name","-Xfrontend","StreamFusion_main","-parse-as-library","-swift-version","5","-I","/Library/Developer/CommandLineTools/Library/Developer/Frameworks","-L","/Library/Developer/CommandLineTools/Library/Developer/Frameworks","-plugin-path","/Library/Developer/CommandLineTools/usr/lib/swift/host/plugins/testing","-sdk","/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk","-g","-Xcc","-isysroot","-Xcc","/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk","-Xcc","-fPIC","-Xcc","-g"]
+
+  "PackageStructure":
+    tool: package-structure-tool
+    inputs: ["/Users/thekidd/worm-ai/StreamFusion/Sources/","/Users/thekidd/worm-ai/StreamFusion/Package.swift","/Users/thekidd/worm-ai/StreamFusion/Package.resolved"]
+    outputs: ["<PackageStructure>"]
+    description: "Planning build"
+    allow-missing-inputs: true
+

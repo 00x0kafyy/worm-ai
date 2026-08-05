@@ -1,0 +1,235 @@
+{
+  "builtTestProducts" : [
+
+  ],
+  "copyCommands" : {
+
+  },
+  "explicitTargetDependencyImportCheckingMode" : {
+    "none" : {
+
+    }
+  },
+  "generatedSourceTargetSet" : [
+
+  ],
+  "pluginDescriptions" : [
+
+  ],
+  "swiftCommands" : {
+    "C.StreamFusion-x86_64-apple-macosx-debug.module" : {
+      "executable" : "/Library/Developer/CommandLineTools/usr/bin/swiftc",
+      "fileList" : "/Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/StreamFusion.build/sources",
+      "importPath" : "/Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/Modules",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/thekidd/worm-ai/StreamFusion/Sources/StreamFusion/main.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/StreamFusion.build/sources"
+        }
+      ],
+      "isLibrary" : false,
+      "moduleName" : "StreamFusion",
+      "moduleOutputPath" : "/Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/Modules/StreamFusion.swiftmodule",
+      "objects" : [
+        "/Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/StreamFusion.build/main.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "x86_64-apple-macosx11.0",
+        "-incremental",
+        "-enable-batch-mode",
+        "-serialize-diagnostics",
+        "-index-store-path",
+        "/Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/index/store",
+        "-Onone",
+        "-enable-testing",
+        "-j16",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+        "-module-cache-path",
+        "/Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/ModuleCache",
+        "-parseable-output",
+        "-Xfrontend",
+        "-entry-point-function-name",
+        "-Xfrontend",
+        "StreamFusion_main",
+        "-parse-as-library",
+        "-swift-version",
+        "5",
+        "-I",
+        "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+        "-L",
+        "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+        "-plugin-path",
+        "/Library/Developer/CommandLineTools/usr/lib/swift/host/plugins/testing",
+        "-sdk",
+        "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+        "-g",
+        "-Xcc",
+        "-isysroot",
+        "-Xcc",
+        "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g"
+      ],
+      "outputFileMapPath" : "/Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/StreamFusion.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/StreamFusion.build/main.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/Modules/StreamFusion.swiftmodule"
+        }
+      ],
+      "prepareForIndexing" : false,
+      "sources" : [
+        "/Users/thekidd/worm-ai/StreamFusion/Sources/StreamFusion/main.swift"
+      ],
+      "tempsPath" : "/Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/StreamFusion.build",
+      "wholeModuleOptimization" : false
+    }
+  },
+  "swiftFrontendCommands" : {
+
+  },
+  "swiftTargetScanArgs" : {
+    "StreamFusion" : [
+      "/Library/Developer/CommandLineTools/usr/bin/swiftc",
+      "-module-name",
+      "StreamFusion",
+      "-c",
+      "/Users/thekidd/worm-ai/StreamFusion/Sources/StreamFusion/main.swift",
+      "-I",
+      "/Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/Modules",
+      "-target",
+      "x86_64-apple-macosx11.0",
+      "-incremental",
+      "-enable-batch-mode",
+      "-serialize-diagnostics",
+      "-index-store-path",
+      "/Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/index/store",
+      "-Onone",
+      "-enable-testing",
+      "-j16",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+      "-module-cache-path",
+      "/Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/ModuleCache",
+      "-parseable-output",
+      "-Xfrontend",
+      "-entry-point-function-name",
+      "-Xfrontend",
+      "StreamFusion_main",
+      "-parse-as-library",
+      "-swift-version",
+      "5",
+      "-I",
+      "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+      "-L",
+      "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+      "-plugin-path",
+      "/Library/Developer/CommandLineTools/usr/lib/swift/host/plugins/testing",
+      "-sdk",
+      "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+      "-g",
+      "-Xcc",
+      "-isysroot",
+      "-Xcc",
+      "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-driver-use-frontend-path",
+      "/Library/Developer/CommandLineTools/usr/bin/swiftc"
+    ]
+  },
+  "targetDependencyMap" : {
+    "StreamFusion" : [
+
+    ]
+  },
+  "testDiscoveryCommands" : {
+
+  },
+  "testEntryPointCommands" : {
+
+  },
+  "traitConfiguration" : {
+    "default" : {
+
+    }
+  },
+  "writeCommands" : {
+    "/Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/StreamFusion-entitlement.plist" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<entitlement-plist>"
+        },
+        {
+          "kind" : "virtual",
+          "name" : "<com.apple.security.get-task-allow>"
+        }
+      ],
+      "outputFilePath" : "/Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/StreamFusion-entitlement.plist"
+    },
+    "/Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/StreamFusion.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/thekidd/worm-ai/StreamFusion/Sources/StreamFusion/main.swift"
+        }
+      ],
+      "outputFilePath" : "/Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/StreamFusion.build/sources"
+    },
+    "/Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/StreamFusion.product/Objects.LinkFileList" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<link-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/StreamFusion.build/main.swift.o"
+        }
+      ],
+      "outputFilePath" : "/Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/StreamFusion.product/Objects.LinkFileList"
+    },
+    "/Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt" : {
+      "alwaysOutOfDate" : true,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<swift-get-version>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Library/Developer/CommandLineTools/usr/bin/swiftc"
+        }
+      ],
+      "outputFilePath" : "/Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: worm-ai
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: worm-ai
+  template:
+    metadata:
+      labels:
+        app: worm-ai
+    spec:
+      containers:
+      - name: api
+        image: your-registry/worm-ai:latest
+        ports:
+        - containerPort: 8000
