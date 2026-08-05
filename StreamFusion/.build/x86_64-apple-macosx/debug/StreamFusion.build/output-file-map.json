@@ -1,0 +1,12 @@
+{
+  "": {
+    "swift-dependencies": "/Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/StreamFusion.build/primary.swiftdeps"
+  },
+  "/Users/thekidd/worm-ai/StreamFusion/Sources/StreamFusion/main.swift": {
+    "dependencies": "/Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/StreamFusion.build/main.d",
+    "object": "/Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/StreamFusion.build/main.swift.o",
+    "swiftmodule": "/Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/StreamFusion.build/main~partial.swiftmodule",
+    "swift-dependencies": "/Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/StreamFusion.build/main.swiftdeps",
+    "diagnostics": "/Users/thekidd/worm-ai/StreamFusion/.build/x86_64-apple-macosx/debug/StreamFusion.build/main.dia"
+  }
+}

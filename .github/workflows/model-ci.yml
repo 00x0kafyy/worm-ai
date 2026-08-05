@@ -1,0 +1,19 @@
+name: Model CI
+on:
+  workflow_dispatch: {}
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: Run instruction-tune stub
+        run: |
+          python - <<'PY'
+from src.models.instruction_tuning import instruction_tune
+print(instruction_tune('data/placeholder', 'out/instruction'))
+PY
